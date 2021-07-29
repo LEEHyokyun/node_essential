@@ -13,10 +13,8 @@ class Sample {
 const fn = new Sample();
 const gn = fn[Symbol.iterator]();
 
-console.log(gn.next());
-console.log(gn.next());
-console.log(gn.next());
+console.log();
 
-console.log(Array.from(fn));
-console.log(Array.from(fn));
-console.log(Array.from(fn));
+console.log(gn.next());
+console.log(gn.next());
+console.log(gn.next());

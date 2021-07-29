@@ -4,7 +4,7 @@
 "use strict";
 
 class Sample {
-  *generate() {
+  *gen() {
     let cnt = 0;
     //++cnt 해당 라인 실행전에 cnt = cnt + 1
     //cnt++ 해당 라인 실행후에 cnt = cnt + 1
@@ -19,7 +19,7 @@ class Sample {
 //아래 결과를 보면 생성자는 최초 1번만 호출되어 비동기적으로 사용할 수 없음을 알 수 있음.
 
 const fn = new Sample();
-const gn = fn.generate();
+const gn = fn.gen();
 
 console.log(gn.next());
 console.log(gn.next());

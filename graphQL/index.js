@@ -1,20 +1,20 @@
 const bodyParser = require("body-parser");
 const express = require("express");
-const bodyParser = requrie(bodyParser);
-const { graphExpress, graphiqlExpress } = require("apollo-server-express");
+const { ApolloServer, gql } = require("apollo-server-express");
 const { makeExecutableSchema } = require("graphql-tools");
 
 const PORT = 8000;
-const server = expresss();
 
-const typeDef = `
-    type Lang {
-        id : Int,
-        name : String!
-    }
-    type Query {
-        getLangs(name: String) : [Lang]
-    }
+const server = express();
+
+const typeDefs = gql`
+  type Lang {
+    id: Int
+    name: String!
+  }
+  type Query {
+    getLangs(name: String): [Lang]
+  }
 `;
 
 const langs = [
@@ -34,3 +34,28 @@ const resolvers = {
     getLangs: () => langs,
   },
 };
+
+const schema = makeExecutableSchema({
+  typeDefs,
+  resolvers,
+});
+
+server.use(bodyParser.json());
+
+server.use(
+  "/graphql",
+  gql({
+    schema,
+  })
+);
+
+server.use(
+  "/graphiql",
+  gql({
+    endpointURL: "/graphiql",
+  })
+);
+
+server.listen(PORT, () => {
+  console.log(`server running on ${PORT}`);
+});

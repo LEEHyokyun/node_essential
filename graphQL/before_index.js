@@ -60,3 +60,14 @@ server.use(
 );
 
 server.listen(PORT, () => console.log(`Server Running at ${PORT}`));
+
+//graphQL resolvers 
+//API call을 통해 data 얻고, 해당 data를 기반으로 데이터 반환
+
+const resolvers ={
+  Query: {
+    getLangs( ,args){
+      return langs.function 
+    }
+  }
+}

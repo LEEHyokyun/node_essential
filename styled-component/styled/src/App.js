@@ -1,16 +1,19 @@
 import React from 'react'
 import styled from "styled-components"
 
+const color = 'black'
+
 import logo from './logo.svg';
 //import './App.css';
 
 const Component = styled.div`
-  color : white;
+  display : ${props => props.isLoaded? 'block' : 'none'};
+  color: ${color};
 `
 
 function App() {
   return (
-    <Component title = "this is styled"/>
+    <Component isLoaded>complete</Component>
   )
 }
 

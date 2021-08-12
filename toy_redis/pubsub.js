@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
     //publisher에서 creatClient를 통해 server 접근
     //이벤트정의(notify)
     //이벤트유도 후 data를 stringify하여 전달
-    publisher.publisher("notify", JSON.stringify(data))
+    publisher.publish("notify", JSON.stringify(data))
 
     //response
     res.send("Pub sent event")
